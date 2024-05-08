@@ -1,17 +1,7 @@
-KERNELDIR=/lib/modules/`uname -r`/build
-
-# This the the Makefile for the device driver (not your demonstration program)
-
-#Change the base name here to your module file name - no extension
-BASENAME=helloworld
-
-
-MODULES = $(BASENAME).ko 
-obj-m += $(BASENAME).o 
+obj-m += encryption_driver.o
 
 all:
-	make -C $(KERNELDIR) M=$(PWD) modules
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
-	make -C $(KERNELDIR) M=$(PWD) clean
-
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
